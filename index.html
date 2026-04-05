@@ -136,7 +136,7 @@ main { max-width: 900px; margin: 0 auto; padding: 24px 20px; width: 100%; }
 @keyframes fadeIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:none; } }
 .anim { animation: fadeIn 0.25s ease both; }
 
-footer { position: fixed; bottom: 0; left: 0; width: 100%; }
+footer { border-top: 1px solid var(--border); background: var(--white); padding: 24px 20px; margin-top: 48px; }
 .footer-inner { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; }
 .footer-logo { font-size: 16px; font-weight: 600; color: var(--text); }
 .footer-links { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; }
@@ -189,7 +189,7 @@ footer { position: fixed; bottom: 0; left: 0; width: 100%; }
 
 <footer>
   <div class="footer-inner">
-    <div class="footer-logo">Benchle</div>
+    <div class="footer-logo">🪑 Benchle</div>
     <nav class="footer-links">
       <a href="about.html">About Us</a>
       <a href="impressum.html">Imprint</a>
@@ -223,12 +223,11 @@ footer { position: fixed; bottom: 0; left: 0; width: 100%; }
 </div>
 
 <script>
-console.log("SCRIPT START");
-const BIN_ID  = '69d17eef36566621a87ccb6c';
-const API_KEY = '$2a$10$ub/q6IbwSoV/mcYt129Aj.IW5K7ye0Wn/wiUhGXppQZtIIh.BXlI2';
+const BIN_ID  = 'DEINE_BIN_ID_HIER';
+const API_KEY = 'DEIN_API_KEY_HIER';
 
 const ANNOYANCES = ['Loud','Pigeons','No shade','Trash everywhere','Shakes','Bad view','Worn down','No backrest','Too cramped','Bad lighting','Too sunny','Wet','Drafty'];
-const EMOJIS = [' ',' ',' ',' ',' ',' ',' ',' '];
+const EMOJIS = ['🏙️','🌳','🌊','⛰️','🌷','🏞️','🌅','🌿'];
 
 let ratings = { location: 0, view: 0, overall: 0 };
 let selectedTags = [];
@@ -328,7 +327,7 @@ function initForm() {
       <textarea id="desc" rows="4" placeholder="What makes this bench special?"></textarea>
     </div>
     <div class="modal-footer">
-      <span class="anon-note">Anonymous · No account needed</span>
+      <span class="anon-note">🔒 Anonymous · No account needed</span>
       <button class="btn-submit" id="submit-btn" onclick="submitReview()" disabled>Post</button>
     </div>`;
   renderStarsEl(document.getElementById('stars-location'), 0, 'location', false);
@@ -460,7 +459,6 @@ function esc(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>
 function formatDate(iso) { return new Date(iso).toLocaleDateString('en-GB',{day:'2-digit',month:'long',year:'numeric'}); }
 
 renderList();
-console.log("SCRIPT END");
 </script>
 </body>
 </html>
