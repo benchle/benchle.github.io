@@ -9,177 +9,140 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg: #dfe5ec;
-  --panel: #f4f6f9;
-  --border: #b8c2cc;
+  --bg1: #6db3f2;
+  --bg2: #1e69de;
+  --panel: #ffffff;
+  --border: #9fb3c8;
   --text: #1a1a1a;
-  --text-secondary: #5c6773;
-  --blue1: #6db3ff;
-  --blue2: #1a73e8;
-  --blue3: #0f4ea8;
-  --star: #fbbc04;
-  --radius: 10px;
+  --text-secondary: #6b7a8c;
+  --blue: #2f80ff;
+  --blue-dark: #1c5ed6;
+  --green: #34c759;
+  --star: #ffcc00;
 }
 
 body {
   font-family: 'DM Sans', sans-serif;
-  background: linear-gradient(#eef2f7, #cfd8e3);
+  background: linear-gradient(var(--bg1), var(--bg2));
   color: var(--text);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-/* HEADER */
+/* HEADER (iOS Navbar) */
 header {
-  background: linear-gradient(#ffffff, #dfe5ec);
-  border-bottom: 1px solid var(--border);
-  box-shadow: inset 0 1px 0 #fff, 0 3px 6px rgba(0,0,0,0.2);
-}
-
-.header-inner {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 14px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  background: linear-gradient(#5aa0e6, #2c6fd6);
+  border-bottom: 1px solid #1c4fa3;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.5),
+    0 2px 6px rgba(0,0,0,0.3);
 }
 
 .logo-text {
-  font-size: 22px;
-  font-weight: 600;
-  text-shadow: 0 1px 0 #fff;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
 }
 
 .logo-text span {
-  color: var(--blue2);
+  color: #d6ecff;
 }
 
-/* BUTTONS */
+/* BUTTONS (iOS glossy) */
 .btn-write,
 .btn-submit {
-  background: linear-gradient(var(--blue1), var(--blue2));
-  border: 1px solid var(--blue3);
-  border-radius: 20px;
+  background: linear-gradient(#6db3ff, #2f80ff);
+  border: 1px solid #1c5ed6;
+  border-radius: 18px;
   color: white;
-  padding: 9px 18px;
-  cursor: pointer;
+  padding: 8px 16px;
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,0.6),
-    inset 0 -2px 4px rgba(0,0,0,0.2),
-    0 3px 5px rgba(0,0,0,0.25);
-  transition: all 0.15s;
-}
-
-.btn-write:hover,
-.btn-submit:hover {
-  background: linear-gradient(#8ec5ff, var(--blue2));
+    inset 0 -2px 4px rgba(0,0,0,0.3),
+    0 2px 5px rgba(0,0,0,0.3);
 }
 
 .btn-write:active,
 .btn-submit:active {
   transform: translateY(2px);
-  box-shadow: inset 0 3px 6px rgba(0,0,0,0.3);
+  box-shadow: inset 0 3px 6px rgba(0,0,0,0.4);
 }
 
 /* MAIN */
 main {
   max-width: 900px;
   margin: 0 auto;
-  padding: 24px 20px;
+  padding: 20px;
   flex: 1;
 }
 
-/* CARDS */
+/* CARDS (iOS panels) */
 .hero,
 .review-card,
 .modal {
-  background: linear-gradient(#ffffff, #e9edf2);
+  background: linear-gradient(#ffffff, #e9f1fb);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: 12px;
   box-shadow:
     inset 0 1px 0 #fff,
-    0 4px 10px rgba(0,0,0,0.2);
+    0 4px 12px rgba(0,0,0,0.3);
 }
 
 /* HERO */
 .hero {
-  padding: 28px;
+  padding: 24px;
   margin-bottom: 20px;
-  display: flex;
-  gap: 20px;
 }
 
 .hero-num {
   font-size: 56px;
+  color: #2c6fd6;
   text-shadow: 0 1px 0 #fff;
-}
-
-/* TOOLBAR */
-.sort-select {
-  background: linear-gradient(#ffffff, #dfe5ec);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 6px 12px;
-  box-shadow: inset 0 1px 2px rgba(0,0,0,0.2);
 }
 
 /* REVIEW CARD */
 .review-card {
-  padding: 20px;
+  padding: 18px;
   margin-bottom: 12px;
-  transition: all 0.15s;
+  transition: 0.15s;
 }
 
 .review-card:hover {
   transform: translateY(-2px);
   box-shadow:
     inset 0 1px 0 #fff,
-    0 6px 14px rgba(0,0,0,0.25);
+    0 6px 16px rgba(0,0,0,0.4);
 }
 
 /* SCORE BOX */
 .rc-score {
-  background: linear-gradient(#f7f7f7, #dcdcdc);
+  background: linear-gradient(#ffffff, #dbe7f5);
   border: 1px solid var(--border);
   border-radius: 8px;
-  padding: 8px 14px;
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
 }
 
-/* TAGS */
+/* TAGS (iOS pills) */
 .tag {
-  background: linear-gradient(#ffffff, #dfe5ec);
+  background: linear-gradient(#ffffff, #dbe7f5);
   border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 5px 12px;
+  border-radius: 14px;
+  padding: 5px 10px;
   box-shadow: inset 0 1px 0 #fff;
 }
 
 .tag.selected {
-  background: linear-gradient(var(--blue1), var(--blue2));
+  background: linear-gradient(#6db3ff, #2f80ff);
   color: white;
 }
 
 /* INPUTS */
 .field input,
 .field textarea {
-  background: linear-gradient(#f7f7f7, #ffffff);
+  background: linear-gradient(#f8fbff, #ffffff);
   border: 1px solid var(--border);
   border-radius: 8px;
-  padding: 10px;
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
-}
-
-/* MODAL */
-.modal {
-  max-width: 560px;
-  margin: auto;
-  padding-bottom: 10px;
-  box-shadow:
-    inset 0 1px 0 #fff,
-    0 10px 30px rgba(0,0,0,0.4);
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
 }
 
 /* STARS */
@@ -190,25 +153,44 @@ main {
 
 .star.lit {
   color: var(--star);
-  text-shadow: 0 0 6px rgba(251,188,4,0.8);
+  text-shadow: 0 0 8px rgba(255,204,0,0.8);
+}
+
+/* BARS */
+.bar-track {
+  background: linear-gradient(#dbe7f5, #c5d6ea);
+  border-radius: 6px;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.bar-fill {
+  background: linear-gradient(#ffe066, #ffb800);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+}
+
+/* MODAL */
+.modal {
+  box-shadow:
+    inset 0 1px 0 #fff,
+    0 10px 30px rgba(0,0,0,0.6);
 }
 
 /* FOOTER */
 footer {
-  background: linear-gradient(#e6ebf1, #cfd8e3);
-  border-top: 1px solid var(--border);
-  padding: 20px;
+  background: linear-gradient(#5aa0e6, #2c6fd6);
+  border-top: 1px solid #1c4fa3;
+  color: white;
   text-align: center;
-  box-shadow: inset 0 1px 0 #fff;
+  padding: 20px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.4);
 }
 
 .footer-links a {
-  color: var(--text-secondary);
-  text-decoration: none;
+  color: #d6ecff;
 }
 
 .footer-links a:hover {
-  color: var(--blue2);
+  color: white;
 }
 </style>
 </head>
