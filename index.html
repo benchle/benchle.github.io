@@ -26,8 +26,7 @@
   --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; }
-main { flex: 1; }
+body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
 
 header { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow); }
 .header-inner { max-width: 900px; margin: 0 auto; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
@@ -36,7 +35,7 @@ header { background: var(--white); border-bottom: 1px solid var(--border); posit
 .btn-write { display: flex; align-items: center; gap: 7px; padding: 9px 18px; background: var(--blue); color: #fff; border: none; border-radius: 20px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; cursor: pointer; transition: background 0.15s, box-shadow 0.15s; white-space: nowrap; }
 .btn-write:hover { background: var(--blue-hover); box-shadow: var(--shadow-md); }
 
-main { max-width: 900px; margin: 0 auto; padding: 24px 20px; width: 100%; }
+main { max-width: 900px; margin: 0 auto; padding: 24px 20px; }
 
 .hero { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); padding: 28px 32px; margin-bottom: 20px; display: flex; align-items: center; gap: 32px; }
 .hero-score { text-align: center; flex-shrink: 0; }
@@ -58,7 +57,6 @@ main { max-width: 900px; margin: 0 auto; padding: 24px 20px; width: 100%; }
 .review-card { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); padding: 20px 24px; cursor: pointer; transition: box-shadow 0.15s; margin-bottom: 12px; }
 .review-card:hover { box-shadow: var(--shadow-md); }
 .rc-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
-.rc-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--bg); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
 .rc-meta { flex: 1; min-width: 0; }
 .rc-location { font-size: 15px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 3px; }
 .rc-stars-row { display: flex; align-items: center; gap: 6px; }
@@ -189,7 +187,7 @@ footer { border-top: 1px solid var(--border); background: var(--white); padding:
 
 <footer>
   <div class="footer-inner">
-    <div class="footer-logo">🪑 Benchle</div>
+    <div class="footer-logo">Benchle</div>
     <nav class="footer-links">
       <a href="about.html">About Us</a>
       <a href="impressum.html">Imprint</a>
@@ -223,11 +221,10 @@ footer { border-top: 1px solid var(--border); background: var(--white); padding:
 </div>
 
 <script>
-const BIN_ID  = 'DEINE_BIN_ID_HIER';
-const API_KEY = 'DEIN_API_KEY_HIER';
+const BIN_ID  = '69d17eef36566621a87ccb6c';
+const API_KEY = '$2a$10$ub/q6IbwSoV/mcYt129Aj.IW5K7ye0Wn/wiUhGXppQZtIIh.BXlI2';
 
 const ANNOYANCES = ['Loud','Pigeons','No shade','Trash everywhere','Shakes','Bad view','Worn down','No backrest','Too cramped','Bad lighting','Too sunny','Wet','Drafty'];
-const EMOJIS = ['🏙️','🌳','🌊','⛰️','🌷','🏞️','🌅','🌿'];
 
 let ratings = { location: 0, view: 0, overall: 0 };
 let selectedTags = [];
@@ -327,7 +324,7 @@ function initForm() {
       <textarea id="desc" rows="4" placeholder="What makes this bench special?"></textarea>
     </div>
     <div class="modal-footer">
-      <span class="anon-note">🔒 Anonymous · No account needed</span>
+      <span class="anon-note">Anonymous · No account needed</span>
       <button class="btn-submit" id="submit-btn" onclick="submitReview()" disabled>Post</button>
     </div>`;
   renderStarsEl(document.getElementById('stars-location'), 0, 'location', false);
@@ -355,7 +352,7 @@ async function submitReview() {
   const reviews = await loadReviews();
   reviews.unshift(review);
   await saveReviews(reviews);
-  document.getElementById('form-inner').innerHTML = `<div class="success-msg"><div class="check">✅</div><p>Review posted!</p></div>`;
+  document.getElementById('form-inner').innerHTML = `<div class="success-msg"><div class="check"></div><p>Review posted!</p></div>`;
   setTimeout(() => { closeWriteModal(); cachedReviews = null; renderList(); }, 1600);
 }
 
@@ -403,7 +400,6 @@ async function renderList() {
     const card = document.createElement('div');
     card.className = 'review-card anim';
     card.onclick = () => showDetail(r.id);
-    const emoji = EMOJIS[r.id % EMOJIS.length];
     const tags = r.annoyances?.length
       ? r.annoyances.slice(0,3).map(t=>`<span class="rc-tag">${esc(t)}</span>`).join('') + (r.annoyances.length>3?`<span class="rc-tag">+${r.annoyances.length-3}</span>`:'')
       : '';
@@ -413,7 +409,6 @@ async function renderList() {
     ].join('');
     card.innerHTML = `
       <div class="rc-top">
-        <div class="rc-avatar">${emoji}</div>
         <div class="rc-meta">
           <div class="rc-location">${esc(r.location)}</div>
           <div class="rc-stars-row">
@@ -434,9 +429,8 @@ async function showDetail(id) {
   const reviews = await loadReviews();
   const r = reviews.find(x => x.id === id);
   if (!r) return;
-  const emoji = EMOJIS[r.id % EMOJIS.length];
   document.getElementById('detail-content').innerHTML = `
-    <div class="detail-loc">${emoji} ${esc(r.location)}</div>
+    <div class="detail-loc">${esc(r.location)}</div>
     <div class="detail-score-row">
       <div class="detail-score-big">${r.starOverall}</div>
       <div class="detail-score-right">
