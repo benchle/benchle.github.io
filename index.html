@@ -25,12 +25,31 @@ main {
   padding: 10px 0;
 }
 
-/* 🧾 JEDE REVIEW = LIST ITEM */
+/* LIST CONTAINER */
+#reviews-container {
+  background: linear-gradient(#f2f6fb, #dce6f2);
+  border-top: 1px solid rgba(255,255,255,0.8);
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+/* JEDES ITEM = flach */
 .review-card {
-  padding: 16px 20px;
-  border-bottom: 1px solid rgba(0,0,0,0.15);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
   background: linear-gradient(#fdfefe, #e8f0fa);
+  padding: 14px 16px;
+  margin: 0; /* ❗ wichtig */
+  border-radius: 0; /* ❗ wichtig */
+  box-shadow: none; /* ❗ wichtig */
+  border-bottom: 1px solid rgba(0,0,0,0.15);
+}
+
+/* iOS Highlight beim klicken */
+.review-card:hover {
+  background: linear-gradient(#dbe9ff, #c5dbff);
+}
+
+/* letzte Linie entfernen */
+.review-card:last-child {
+  border-bottom: none;
 }
 
 /* Hover wie iOS Tap */
@@ -85,6 +104,44 @@ main {
 /* FOOTER bleibt */
 footer {
   margin-top: 0;
+}
+
+/* Overlay bleibt */
+.modal-overlay {
+  background: rgba(0,0,0,0.5);
+}
+
+/* POPUP = von unten rein sliden */
+.modal {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-width: none;
+  width: 100%;
+  border-radius: 16px 16px 0 0;
+  animation: slideUpIOS 0.25s ease;
+}
+
+/* Animation */
+@keyframes slideUpIOS {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* kleiner grauer Balken oben */
+.modal::before {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 5px;
+  border-radius: 3px;
+  background: rgba(0,0,0,0.3);
+  margin: 10px auto;
 }
 </style>
 </head>
