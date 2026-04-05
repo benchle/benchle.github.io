@@ -223,6 +223,7 @@ footer { position: fixed; bottom: 0; left: 0; width: 100%; }
 </div>
 
 <script>
+console.log("SCRIPT START");
 const BIN_ID  = '69d17eef36566621a87ccb6c';
 const API_KEY = '$2a$10$ub/q6IbwSoV/mcYt129Aj.IW5K7ye0Wn/wiUhGXppQZtIIh.BXlI2';
 
@@ -459,6 +460,7 @@ function esc(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>
 function formatDate(iso) { return new Date(iso).toLocaleDateString('en-GB',{day:'2-digit',month:'long',year:'numeric'}); }
 
 renderList();
+console.log("SCRIPT END");
 </script>
 </body>
 </html>
