@@ -6,185 +6,85 @@
 <title>Benchle</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
-:root {
-  --blue-top: #6ec3ff;
-  --blue-mid: #3a8dde;
-  --blue-bot: #1f5fae;
-
-  --glass: rgba(255,255,255,0.25);
-  --white: #ffffff;
-  --text: #0a0a0a;
-  --text-soft: #3a3a3a;
-
-  --star: #ffd54a;
-}
-
-/* 🌊 Hintergrund wie iOS Wallpaper */
-body {
-  font-family: 'DM Sans', sans-serif;
-  background: radial-gradient(circle at top, #6ec3ff, #2c6fbf 60%, #1f4f9e);
-  color: var(--text);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* 🧊 HEADER (Glas + Verlauf) */
-header {
-  background: linear-gradient(var(--blue-top), var(--blue-bot));
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.6),
-    0 3px 10px rgba(0,0,0,0.4);
-  border-bottom: 1px solid rgba(0,0,0,0.3);
-}
-
-.logo-text {
-  color: white;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.6);
-}
-
-.logo-text span {
-  color: #d6ecff;
-}
-
-/* 🔘 iOS BUTTON */
-.btn-write,
-.btn-submit {
-  background: linear-gradient(#6ec3ff, #1a73e8);
-  border-radius: 20px;
-  border: 1px solid #0d47a1;
-  color: white;
-  padding: 9px 18px;
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.7),
-    inset 0 -2px 5px rgba(0,0,0,0.3),
-    0 3px 6px rgba(0,0,0,0.4);
-}
-
-.btn-write:active,
-.btn-submit:active {
-  transform: translateY(2px);
-  box-shadow: inset 0 3px 8px rgba(0,0,0,0.4);
-}
-
-/* 📱 MAIN */
-main {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 20px;
-  flex: 1;
-}
-
-/* 🧊 GLASS CARDS */
+/* ❌ CARDS KOMPLETT ENTFERNEN */
 .hero,
 .review-card,
 .modal {
-  background: linear-gradient(
-    rgba(255,255,255,0.95),
-    rgba(220,235,255,0.9)
-  );
-  border-radius: 14px;
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(255,255,255,0.6);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.8),
-    0 8px 20px rgba(0,0,0,0.35);
+  background: none;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
 }
 
-/* ✨ HERO */
-.hero-num {
-  font-size: 56px;
-  color: #0d47a1;
-  text-shadow: 0 1px 0 #fff;
+/* 📱 HAUPTFLÄCHE WIE iOS LIST */
+main {
+  background: linear-gradient(#f2f6fb, #dce6f2);
+  border-top: 1px solid rgba(255,255,255,0.8);
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.15);
+  padding: 10px 0;
 }
 
-/* ⭐ STARS */
-.star {
-  color: #bbb;
+/* 🧾 JEDE REVIEW = LIST ITEM */
+.review-card {
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(0,0,0,0.15);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
+  background: linear-gradient(#fdfefe, #e8f0fa);
 }
 
-.star.lit {
-  color: var(--star);
-  text-shadow: 0 0 8px rgba(255,215,80,0.9);
-}
-
-/* 📊 BARS */
-.bar-track {
-  background: rgba(0,0,0,0.15);
-  border-radius: 6px;
-  overflow: hidden;
-}
-
-.bar-fill {
-  background: linear-gradient(#ffe082, #ffb300);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
-}
-
-/* 🧾 REVIEW CARD */
+/* Hover wie iOS Tap */
 .review-card:hover {
-  transform: translateY(-3px);
+  background: linear-gradient(#dbe9ff, #c5dbff);
 }
 
-/* 🧱 SCORE BOX */
+/* HERO auch integriert */
+.hero {
+  padding: 20px;
+  border-bottom: 2px solid rgba(0,0,0,0.2);
+  background: linear-gradient(#eaf2fb, #d6e6fa);
+}
+
+/* TOOLBAR */
+.toolbar {
+  padding: 10px 20px;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  background: linear-gradient(#e3edf9, #cfe0f5);
+}
+
+/* SCORE BOX weniger "card" */
 .rc-score {
-  background: linear-gradient(#ffffff, #d6e9ff);
-  border-radius: 10px;
-  box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+  background: linear-gradient(#ffffff, #dce9f9);
+  border: 1px solid #a8c4e8;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
 }
 
-/* 🏷 TAGS */
+/* TAGS */
 .tag {
-  background: linear-gradient(#ffffff, #cfe6ff);
-  border-radius: 20px;
-  border: 1px solid #9cc9ff;
-  box-shadow: inset 0 1px 0 #fff;
+  background: linear-gradient(#ffffff, #d6e8ff);
+  border: 1px solid #9fc2f0;
 }
 
-.tag.selected {
+/* MODAL = FULLSCREEN LOOK */
+.modal {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  border-radius: 0;
+}
+
+/* MODAL HEADER wie iOS Navbar */
+.modal-header {
   background: linear-gradient(#6ec3ff, #1a73e8);
   color: white;
-}
-
-/* ✍ INPUTS */
-.field input,
-.field textarea {
-  background: linear-gradient(#ffffff, #e3f2ff);
-  border: 1px solid #9cc9ff;
-  border-radius: 10px;
-  box-shadow: inset 0 2px 6px rgba(0,0,0,0.2);
-}
-
-/* 🪟 MODAL */
-.modal {
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.9),
-    0 15px 40px rgba(0,0,0,0.5);
+    inset 0 1px 0 rgba(255,255,255,0.6),
+    0 2px 6px rgba(0,0,0,0.3);
 }
 
-/* 🌑 OVERLAY */
-.modal-overlay {
-  background: rgba(0,0,0,0.6);
-}
-
-/* 🧾 FOOTER */
+/* FOOTER bleibt */
 footer {
-  background: linear-gradient(#3a8dde, #1f5fae);
-  color: white;
-  text-align: center;
-  padding: 20px;
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.4),
-    0 -3px 10px rgba(0,0,0,0.4);
-}
-
-.footer-links a {
-  color: #d6ecff;
-}
-
-.footer-links a:hover {
-  color: white;
+  margin-top: 0;
 }
 </style>
 </head>
