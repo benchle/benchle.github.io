@@ -136,7 +136,7 @@ main { max-width: 900px; margin: 0 auto; padding: 24px 20px; width: 100%; }
 @keyframes fadeIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:none; } }
 .anim { animation: fadeIn 0.25s ease both; }
 
-footer { border-top: 1px solid var(--border); background: var(--white); padding: 24px 20px; margin-top: 48px; }
+footer { position: fixed; bottom: 0; left: 0; width: 100%; }
 .footer-inner { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; }
 .footer-logo { font-size: 16px; font-weight: 600; color: var(--text); }
 .footer-links { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; }
