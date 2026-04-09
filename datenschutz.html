@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Privacy Policy - Benchle</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    :root {
+      --bg: #f8f9fa;
+      --white: #ffffff;
+      --border: #e0e0e0;
+      --text: #1a1a1a;
+      --text-secondary: #5f6368;
+      --star: #fbbc04;
+      --star-empty: #dadce0;
+      --blue: #1a73e8;
+      --blue-hover: #1557b0;
+      --tag-sel-bg: #1a73e8;
+      --tag-sel-color: #fff;
+      --green: #137333;
+      --radius: 12px;
+      --shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.08);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; }
+    
+    header { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow); }
+    .header-inner { max-width: 900px; margin: 0 auto; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .logo-text { font-size: 22px; font-weight: 600; letter-spacing: -0.5px; color: var(--text); }
+    .logo-text span { color: var(--blue); }
+    .btn-write { display: flex; align-items: center; gap: 7px; padding: 9px 18px; background: var(--blue); color: #fff; border: none; border-radius: 20px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; cursor: pointer; transition: background 0.15s, box-shadow 0.15s; white-space: nowrap; }
+    .btn-write:hover { background: var(--blue-hover); box-shadow: var(--shadow-md); }
+    
+    main { max-width: 900px; width: 100%; margin: 0 auto; padding: 24px 20px; flex: 1; }
+    
+    .hero { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); padding: 28px 32px; margin-bottom: 20px; display: flex; align-items: center; gap: 32px; }
+    .hero-score { text-align: center; flex-shrink: 0; }
+    .hero-num { font-size: 56px; font-weight: 600; line-height: 1; }
+    .hero-stars { display: flex; gap: 3px; margin: 6px 0 4px; justify-content: center; }
+    .hero-count { font-size: 13px; color: var(--text-secondary); }
+    .hero-divider { width: 1px; height: 80px; background: var(--border); flex-shrink: 0; }
+    .hero-bars { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+    .bar-row { display: flex; align-items: center; gap: 10px; }
+    .bar-label { font-size: 13px; color: var(--text-secondary); width: 16px; text-align: right; flex-shrink: 0; }
+    .bar-track { flex: 1; height: 8px; background: var(--star-empty); border-radius: 4px; overflow: hidden; }
+    .bar-fill { height: 100%; background: var(--star); border-radius: 4px; transition: width 0.6s ease; }
+    .bar-count { font-size: 13px; color: var(--text-secondary); width: 24px; flex-shrink: 0; }
+    
+    .toolbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 10px; }
+    .toolbar-label { font-size: 14px; color: var(--text-secondary); }
+    .sort-select { padding: 7px 12px; border: 1px solid var(--border); border-radius: 20px; background: var(--white); font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--text); cursor: pointer; outline: none; }
+    
+    .review-card { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); padding: 20px 24px; cursor: pointer; transition: box-shadow 0.15s; margin-bottom: 12px; }
+    .review-card:hover { box-shadow: var(--shadow-md); }
+    .rc-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+    .rc-meta { flex: 1; min-width: 0; }
+    .rc-location { font-size: 15px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 3px; }
+    .rc-stars-row { display: flex; align-items: center; gap: 6px; }
+    .rc-date { font-size: 12px; color: var(--text-secondary); }
+    .rc-score { text-align: center; flex-shrink: 0; background: var(--bg); border-radius: 8px; padding: 8px 14px; }
+    .rc-score-num { font-size: 24px; font-weight: 600; line-height: 1; }
+    .rc-score-label { font-size: 11px; color: var(--text-secondary); margin-top: 1px; }
+    .rc-sub-stars { display: flex; gap: 16px; margin-bottom: 10px; flex-wrap: wrap; }
+    .rc-sub { font-size: 12px; color: var(--text-secondary); display: flex; align-items: center; gap: 4px; }
+    .rc-sub b { color: var(--star); }
+    .rc-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+    .rc-tag { padding: 3px 10px; background: #fce8e6; color: #c5221f; border-radius: 12px; font-size: 12px; font-weight: 500; }
+    .rc-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    
+    .empty-state { text-align: center; padding: 60px 0; color: var(--text-secondary); }
+    .empty-state .icon { font-size: 48px; margin-bottom: 16px; }
+    .empty-state h3 { font-size: 18px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+    .empty-state p { font-size: 14px; }
+    
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 200; align-items: center; justify-content: center; padding: 20px; }
+    .modal-overlay.open { display: flex; }
+    .modal { background: var(--white); border-radius: var(--radius); box-shadow: 0 8px 40px rgba(0,0,0,0.2); width: 100%; max-width: 560px; max-height: 90vh; overflow-y: auto; animation: slideUp 0.2s ease; }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .modal-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px 16px; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: var(--white); z-index: 1; }
+    .modal-header h2 { font-size: 18px; font-weight: 600; }
+    .modal-close { width: 32px; height: 32px; border-radius: 50%; border: none; background: var(--bg); font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text-secondary); transition: background 0.15s; }
+    .modal-close:hover { background: var(--border); }
+    .modal-body { padding: 20px 24px 24px; }
+    
+    .field { margin-bottom: 20px; }
+    .field label { display: block; font-size: 13px; font-weight: 500; color: var(--text-secondary); margin-bottom: 7px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .field input[type="text"], .field textarea { width: 100%; padding: 11px 14px; border: 1.5px solid var(--border); border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text); outline: none; transition: border-color 0.15s; background: var(--white); }
+    .field input[type="text"]:focus, .field textarea:focus { border-color: var(--blue); }
+    .field textarea { resize: vertical; line-height: 1.6; }
+    
+    .stars-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+    .star-group-label { font-size: 13px; font-weight: 500; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+    .stars { display: flex; gap: 4px; }
+    .star { font-size: 26px; color: var(--star-empty); cursor: pointer; transition: color 0.1s, transform 0.1s; user-select: none; line-height: 1; }
+    .star.lit { color: var(--star); }
+    .star:hover { transform: scale(1.2); }
+    .star.readonly { cursor: default; }
+    .star.readonly:hover { transform: none; }
+    
+    .tags-wrap { display: flex; flex-wrap: wrap; gap: 7px; }
+    .tag { padding: 6px 13px; border: 1.5px solid var(--border); border-radius: 16px; background: var(--white); color: var(--text-secondary); font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.12s; }
+    .tag:hover { border-color: var(--blue); color: var(--blue); }
+    .tag.selected { background: var(--tag-sel-bg); color: var(--tag-sel-color); border-color: var(--tag-sel-bg); }
+    
+    .modal-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 16px; border-top: 1px solid var(--border); margin-top: 4px; flex-wrap: wrap; gap: 10px; }
+    .anon-note { font-size: 12px; color: var(--text-secondary); }
+    .btn-submit { padding: 10px 24px; background: var(--blue); color: #fff; border: none; border-radius: 20px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; cursor: pointer; transition: background 0.15s; }
+    .btn-submit:disabled { opacity: 0.4; cursor: not-allowed; }
+    .btn-submit:not(:disabled):hover { background: var(--blue-hover); }
+    
+    .success-msg { text-align: center; padding: 40px 0; color: var(--green); }
+    .success-msg .check { font-size: 48px; margin-bottom: 12px; }
+    .success-msg p { font-size: 16px; font-weight: 500; }
+    
+    .detail-loc { font-size: 22px; font-weight: 600; margin-bottom: 12px; line-height: 1.3; }
+    .detail-score-row { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; flex-wrap: wrap; }
+    .detail-score-big { font-size: 40px; font-weight: 600; line-height: 1; }
+    .detail-score-right { display: flex; flex-direction: column; gap: 4px; }
+    .detail-date { font-size: 13px; color: var(--text-secondary); }
+    .detail-sub-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+    .detail-sub-card { background: var(--bg); border-radius: 8px; padding: 12px 16px; }
+    .detail-sub-card-label { font-size: 11px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+    .detail-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 20px; }
+    .detail-tag { padding: 5px 12px; background: #fce8e6; color: #c5221f; border-radius: 12px; font-size: 13px; font-weight: 500; }
+    .detail-desc { font-size: 15px; line-height: 1.7; color: var(--text); background: var(--bg); border-radius: 8px; padding: 16px; }
+    
+    .loading { display: flex; align-items: center; justify-content: center; padding: 60px 0; color: var(--text-secondary); gap: 10px; font-size: 15px; }
+    .spinner { width: 22px; height: 22px; border: 2.5px solid var(--border); border-top-color: var(--blue); border-radius: 50%; animation: spin 0.7s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes fadeIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:none; } }
+    .anim { animation: fadeIn 0.25s ease both; }
+    
+    footer { border-top: 1px solid var(--border); background: var(--white); padding: 24px 20px; margin-top: 48px; }
+    .footer-inner { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; }
+    .footer-logo { font-size: 16px; font-weight: 600; color: var(--text); }
+    .footer-links { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; }
+    .footer-links a { font-size: 13px; color: var(--text-secondary); text-decoration: none; transition: color 0.15s; }
+    .footer-links a:hover { color: var(--blue); }
+    .footer-copy { font-size: 12px; color: var(--text-secondary); }
+    
+    @media (max-width: 500px) {
+      .hero { flex-direction: column; gap: 16px; }
+      .hero-divider { display: none; }
+      .stars-grid { grid-template-columns: 1fr 1fr; }
+      .detail-sub-grid { grid-template-columns: 1fr; }
+      .rc-score { display: none; }
+    }
+    
+    /* 🌈 GLOBAL: mehr Tiefe + Verlauf */
+    body {
+      background: linear-gradient(#fdfdfd, #e9edf2);
+    }
+    
+    /* 🧱 HEADER – leicht glossy */
+    header {
+      background: linear-gradient(#ffffff, #e6e6e6);
+      box-shadow: inset 0 1px 0 #fff, 0 2px 6px rgba(0,0,0,0.15);
+    }
+    
+    /* 🔘 BUTTONS – classic shiny */
+    .btn-write,
+    .btn-submit {
+      background: linear-gradient(#4da3ff, #1a73e8);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.6),
+        inset 0 -2px 4px rgba(0,0,0,0.2),
+        0 2px 4px rgba(0,0,0,0.2);
+      border: 1px solid #0f4ea8;
+    }
+    
+    .btn-write:hover,
+    .btn-submit:not(:disabled):hover {
+      background: linear-gradient(#6bb5ff, #1557b0);
+    }
+    
+    /* 🧊 CARDS – “raised paper” look */
+    .review-card,
+    .hero,
+    .modal {
+      background: linear-gradient(#ffffff, #f1f1f1);
+      box-shadow:
+        inset 0 1px 0 #fff,
+        0 4px 10px rgba(0,0,0,0.15);
+      border: 1px solid #d0d0d0;
+    }
+    
+    /* 🪵 SCORE BOX */
+    .rc-score {
+      background: linear-gradient(#f7f7f7, #e0e0e0);
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.2);
+      border: 1px solid #cfcfcf;
+    }
+    
+    /* ⭐ STARS – bisschen Glow */
+    .star.lit {
+      text-shadow: 0 0 6px rgba(251,188,4,0.7);
+    }
+    
+    /* 📊 BARS */
+    .bar-track {
+      background: linear-gradient(#e0e0e0, #cfcfcf);
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.25);
+    }
+    
+    .bar-fill {
+      background: linear-gradient(#ffd95e, #fbbc04);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
+    }
+    
+    /* 🏷 TAGS */
+    .tag {
+      background: linear-gradient(#ffffff, #e6e6e6);
+      box-shadow:
+        inset 0 1px 0 #fff,
+        0 1px 2px rgba(0,0,0,0.1);
+    }
+    
+    .tag.selected {
+      background: linear-gradient(#4da3ff, #1a73e8);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.5),
+        inset 0 -2px 4px rgba(0,0,0,0.2);
+    }
+    
+    /* 📝 INPUTS – eingelassen */
+    .field input,
+    .field textarea {
+      background: linear-gradient(#f5f5f5, #ffffff);
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+      border: 1px solid #c8c8c8;
+    }
+    
+    /* 🪟 MODAL */
+    .modal {
+      border: 1px solid #bfbfbf;
+      box-shadow:
+        inset 0 1px 0 #fff,
+        0 10px 30px rgba(0,0,0,0.4);
+    }
+    
+    /* ❌ CLOSE BUTTON */
+    .modal-close {
+      background: linear-gradient(#f0f0f0, #d6d6d6);
+      box-shadow: inset 0 1px 0 #fff;
+    }
+    
+    /* 🧾 FOOTER – leicht embossed */
+    footer {
+      background: linear-gradient(#f0f0f0, #dcdcdc);
+      box-shadow: inset 0 1px 0 #fff;
+      border-top: 1px solid #bbb;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    h3 {
+      text-align: center;
+    }
+
+    h4 {
+      text-align: center;
+    }
+
+    h5 {
+      text-align: center;
+    }
+
+    h6 {
+      text-align: center;
+    }
+
+    p {
+      text-align: center;
+    }
+
+    a {
+      color: black;
+      text-decoration: none;
+    }
+
+    ul {
+      text-align: center;
+      text-decoration: none;
+    }
+
+    li {
+      text-align: center;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo-text"><a href="index.html">Benchle</a></div>
+  </div>
+</header>
+
+<main>
+  <div class="panel">
+
+    <h1>Privacy Policy</h1>
+<h2 id="m4158">Preamble</h2>
+<p>With the following privacy policy, we would like to inform you about the types of your personal data (hereinafter also referred to as "data") that we process, for what purposes, and to what extent within the scope of providing our application.</p>
+<p>The terms used are not gender-specific.</p>
+
+<p>Status: April 8, 2026</p><h2>Table of Contents</h2> <ul class="index"><li><a class="index-link" href="#m4158">Preamble</a></li><li><a class="index-link" href="#m3">Controller</a></li><li><a class="index-link" href="#mOverview">Overview of Processing</a></li><li><a class="index-link" href="#m2427">Relevant Legal Bases</a></li><li><a class="index-link" href="#m27">Security Measures</a></li><li><a class="index-link" href="#m12">General Information on Data Storage and Deletion</a></li><li><a class="index-link" href="#m10">Rights of Data Subjects</a></li><li><a class="index-link" href="#m432">Community Features</a></li><li><a class="index-link" href="#m15">Amendment and Updates</a></li><li><a class="index-link" href="#m42">Definitions</a></li></ul><h2 id="m3">Controller</h2><p>Benchle<br>Cologne Street 134<br>53757, Sankt Augustin, Germany</p>
+<p>Email address: <a href="mailto:benchle@yahoo.com">benchle@yahoo.com</a></p>
+
+<h2 id="mOverview">Overview of Processing</h2><p>The following overview summarizes the types of data processed and the purposes of their processing and refers to the data subjects.</p><h3>Types of data processed</h3>
+<ul><li>None</li></ul><h3>Categories of data subjects</h3><ul><li>Users.</li></ul><h3>Purposes of processing</h3><ul><li>Provision of contractual services and fulfillment of contractual obligations.</li><li>Security measures.</li><li>Provision of our online services and user-friendliness.</li></ul><h2 id="m2427">Relevant Legal Bases</h2><p><strong>Relevant legal bases under the GDPR: </strong>Below you will find an overview of the legal bases of the GDPR on which we process personal data. Please note that in addition to the provisions of the GDPR, national data protection regulations may apply in your or our country of residence or establishment. If more specific legal bases are relevant in individual cases, we will inform you of these in the privacy policy.</p>
+ <ul><li><strong>Contract performance and pre-contractual inquiries (Art. 6 para. 1 sentence 1 lit. b GDPR)</strong> - Processing is necessary for the performance of a contract to which the data subject is a party or in order to take steps at the request of the data subject prior to entering into a contract.</li><li><strong>Legitimate interests (Art. 6 para. 1 sentence 1 lit. f GDPR)</strong> - Processing is necessary for the purposes of the legitimate interests pursued by the controller or by a third party, provided that the interests, fundamental rights and freedoms of the data subject which require protection of personal data do not override those interests.</li></ul><p><strong>National data protection regulations in Germany: </strong>In addition to the data protection regulations of the GDPR, national regulations apply in Germany. This includes in particular the Federal Data Protection Act (Bundesdatenschutzgesetz – BDSG). The BDSG contains specific provisions on the right of access, the right to erasure, the right to object, the processing of special categories of personal data, processing for other purposes, and transmission as well as automated decision-making in individual cases including profiling. Furthermore, state data protection laws of the individual federal states may apply.</p>
+
+<h2 id="m27">Security Measures</h2><p>We take appropriate technical and organizational measures in accordance with legal requirements, taking into account the state of the art, implementation costs, and the nature, scope, context and purposes of processing as well as the likelihood and severity of risks to the rights and freedoms of natural persons, in order to ensure a level of protection appropriate to the risk.</p>
+<p>These measures include, in particular, safeguarding the confidentiality, integrity and availability of data by controlling physical and electronic access to the data as well as access, input, disclosure, ensuring availability and separation of the data. Furthermore, we have established procedures to ensure the exercise of data subject rights, the deletion of data and responses to data breaches. In addition, we take the protection of personal data into account already during the development or selection of hardware, software and procedures, in accordance with the principle of data protection by design and by default.</p>
+<p>Securing online connections through TLS/SSL encryption technology (HTTPS): To protect the data of users transmitted via our online services from unauthorized access, we use TLS/SSL encryption technology. Secure Sockets Layer (SSL) and Transport Layer Security (TLS) are the cornerstones of secure data transmission on the Internet. These technologies encrypt the information transmitted between the website or app and the user's browser (or between two servers), thereby protecting the data from unauthorized access. TLS, as the more advanced and secure version of SSL, ensures that all data transmissions meet the highest security standards. When a website is secured by an SSL/TLS certificate, this is indicated by the display of HTTPS in the URL. This serves as an indicator for users that their data is transmitted securely and in encrypted form.</p>
+
+<h2 id="m12">General Information on Data Storage and Deletion</h2><p>We delete personal data that we process in accordance with legal requirements as soon as the underlying consent is withdrawn or there are no further legal grounds for processing. This applies to cases where the original purpose of processing no longer applies or the data is no longer required. Exceptions to this rule exist if legal obligations or special interests require longer retention or archiving of the data.</p>
+<p>In particular, data that must be retained for commercial or tax law reasons or whose storage is necessary for legal prosecution or to protect the rights of other natural or legal persons must be archived accordingly.</p>
+<p>Our privacy notices contain additional information on the retention and deletion of data that apply specifically to certain processing processes.</p>
+<p>If multiple retention periods or deletion deadlines are specified for a date, the longest period always applies. Data that is no longer required for the originally intended purpose but is retained due to legal requirements or other reasons will only be processed for the reasons justifying its retention.</p>
+<p>Retention and deletion of data: The following general periods apply for retention and archiving under German law:</p><ul> <li>10 years - Retention period for books and records, annual financial statements, inventories, management reports, opening balance sheet as well as the work instructions and other organizational documents required for their understanding (§ 147 para. 1 no. 1 in conjunction with para. 3 AO, § 14b para. 1 UStG, § 257 para. 1 no. 1 in conjunction with para. 4 HGB).</li><li>8 years - Accounting documents, such as invoices and expense receipts (§ 147 para. 1 no. 4 and 4a in conjunction with para. 3 sentence 1 AO and § 257 para. 1 no. 4 in conjunction with para. 4 HGB).</li><li>6 years - Other business documents: received commercial or business letters, reproductions of sent commercial or business letters, other documents relevant for taxation, e.g., wage slips, cost accounting sheets, calculation documents, price markings, as well as payroll documents if they are not already accounting records and cash register receipts (§ 147 para. 1 no. 2, 3, 5 in conjunction with para. 3 AO, § 257 para. 1 no. 2 and 3 in conjunction with para. 4 HGB).</li><li>3 years - Data required to consider potential warranty and compensation claims or similar contractual claims and rights, as well as to process related inquiries, based on previous business experience and common industry practices, are stored for the duration of the regular statutory limitation period of three years (§§ 195, 199 BGB).</li> </ul>
+
+<h2 id="m10">Rights of Data Subjects</h2><p>Rights of data subjects under the GDPR: As a data subject, you have various rights under the GDPR, which arise in particular from Articles 15 to 21 GDPR:</p><ul><li><strong>Right to object: You have the right, on grounds relating to your particular situation, to object at any time to the processing of personal data concerning you based on Art. 6 para. 1 lit. e or f GDPR; this also applies to profiling based on those provisions. If personal data concerning you is processed for direct marketing purposes, you have the right to object at any time to processing of personal data concerning you for such marketing; this also applies to profiling insofar as it is related to such direct marketing.</strong></li><li><strong>Right to withdraw consent:</strong> You have the right to withdraw consent at any time.</li><li><strong>Right of access:</strong> You have the right to request confirmation as to whether relevant data is being processed and to obtain information about this data as well as further information and a copy of the data in accordance with legal requirements.</li><li><strong>Right to rectification:</strong> You have the right, in accordance with legal requirements, to request completion of the data concerning you or correction of inaccurate data concerning you.</li><li><strong>Right to erasure and restriction of processing:</strong> You have the right, in accordance with legal requirements, to request that data concerning you be deleted without delay or, alternatively, to request restriction of processing of the data.</li><li><strong>Right to data portability:</strong> You have the right to receive data concerning you that you have provided to us in a structured, commonly used and machine-readable format or to request its transfer to another controller.</li><li><strong>Complaint to supervisory authority:</strong> Without prejudice to any other administrative or judicial remedy, you have the right to lodge a complaint with a supervisory authority, in particular in the Member State of your habitual residence, place of work or the place of the alleged infringement, if you consider that the processing of personal data concerning you violates the GDPR.</li></ul>
+
+<h2 id="m432">Community Features</h2><p>The community features we provide allow users to engage in conversations or otherwise interact with each other. Please note that the use of community features is only permitted in compliance with applicable laws, our terms and policies, and the rights of other users and third parties.</p>
+<ul class="m-elements"><li><strong>Types of data processed:</strong> Inventory data (e.g., full name, residential address, contact information, customer number, etc.). Usage data (e.g., page views and duration of visits, click paths, usage intensity and frequency, device types and operating systems used, interactions with content and functions).</li><li><strong>Data subjects:</strong> Users (e.g., website visitors, users of online services).</li><li><strong>Purposes of processing and legitimate interests:</strong> Provision of contractual services and fulfillment of contractual obligations; security measures. Provision of our online services and user-friendliness.</li><li><strong>Retention and deletion:</strong> Deletion in accordance with the information in the section "General Information on Data Storage and Deletion".</li><li class=""><strong>Legal bases:</strong> Contract performance and pre-contractual inquiries (Art. 6 para. 1 sentence 1 lit. b GDPR). Legitimate interests (Art. 6 para. 1 sentence 1 lit. f GDPR).</li></ul><p><strong>Further information on processing processes, procedures and services:</strong></p><ul class="m-elements"><li><strong>User contributions are public: </strong>Content and contributions created by users are publicly visible and accessible; <span class=""><strong>Legal bases:</strong> Contract performance and pre-contractual inquiries (Art. 6 para. 1 sentence 1 lit. b GDPR).</span></li></ul>
+<h2 id="m15">Amendment and Updates</h2><p>Please regularly inform yourself about the content of our privacy policy. We adapt the privacy policy as soon as changes to the data processing we carry out make this necessary. We will inform you as soon as changes require your participation (e.g., consent) or any other individual notification.</p>
+<p>If we provide addresses and contact information of companies and organizations in this privacy policy, please note that addresses may change over time and we ask you to verify the information before contacting them.</p>
+
+<h2 id="m42">Definitions</h2><p>This section provides an overview of the terms used in this privacy policy. If terms are defined by law, their legal definitions apply. The following explanations are primarily intended to aid understanding.</p>
+ <ul class="glossary"><li><strong>Inventory data:</strong> Inventory data includes essential information necessary for identifying and managing contractual partners, user accounts, profiles, and similar assignments. This data may include personal and demographic information such as names, contact details (addresses, phone numbers, email addresses), dates of birth, and specific identifiers (user IDs). Inventory data forms the basis for any formal interaction between individuals and services, institutions, or systems by enabling clear identification and communication.</li><li><strong>Usage data:</strong> Usage data refers to information that captures how users interact with digital products, services, or platforms. This data includes a wide range of information showing how users use applications, which features they prefer, how long they stay on certain pages, and which paths they take through an application. Usage data may also include frequency of use, timestamps of activities, IP addresses, device information, and location data. It is particularly valuable for analyzing user behavior, optimizing user experience, personalizing content, and improving products or services. Additionally, usage data plays a key role in identifying trends, preferences, and potential problem areas within digital offerings.</li><li><strong>Personal data:</strong> "Personal data" means any information relating to an identified or identifiable natural person (hereinafter "data subject"); an identifiable natural person is one who can be identified, directly or indirectly, in particular by reference to an identifier such as a name, an identification number, location data, an online identifier (e.g., cookie), or to one or more factors specific to the physical, physiological, genetic, mental, economic, cultural, or social identity of that natural person.</li><li><strong>Controller:</strong> The "controller" is the natural or legal person, authority, agency, or other body which, alone or jointly with others, determines the purposes and means of the processing of personal data.</li><li><strong>Processing:</strong> "Processing" means any operation or set of operations which is performed on personal data, whether or not by automated means. The term is broad and covers practically any handling of data, including collection, evaluation, storage, transmission, or deletion.</li></ul>
+
+  </div>
+</main>
+
+<footer> <!-- die scheiße klappt nie -->
+  <div class="footer-inner">
+    <div class="footer-logo">Benchle</div>
+    <nav class="footer-links">
+      <a href="about.html">About Us</a>
+      <a href="impressum.html">Imprint</a>
+      <a href="datenschutz.html">Privacy</a>
+      <a href="kontakt.html">Contact</a>
+    </nav>
+    <div class="footer-copy">© 2026 Benchle · Anonymous · Free · For everyone</div>
+  </div>
+</footer>
+
+</body>
+</html>
